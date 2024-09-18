@@ -30,7 +30,7 @@ proto.bpjs = require('./bpjs_pb.js');
  * @struct
  * @final
  */
-proto.bpjs.BPJSServiceClient =
+proto.bpjs.ParticipantServiceClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options.format = 'text';
@@ -56,7 +56,7 @@ proto.bpjs.BPJSServiceClient =
  * @struct
  * @final
  */
-proto.bpjs.BPJSServicePromiseClient =
+proto.bpjs.ParticipantServicePromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options.format = 'text';
@@ -77,61 +77,165 @@ proto.bpjs.BPJSServicePromiseClient =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.bpjs.SampleServiceRequest,
- *   !proto.bpjs.SampleServiceResponse>}
+ *   !proto.bpjs.GetParticipantRequest,
+ *   !proto.bpjs.GetParticipantResponse>}
  */
-const methodDescriptor_BPJSService_SampleService = new grpc.web.MethodDescriptor(
-  '/bpjs.BPJSService/SampleService',
+const methodDescriptor_ParticipantService_GetParticipant = new grpc.web.MethodDescriptor(
+  '/bpjs.ParticipantService/GetParticipant',
   grpc.web.MethodType.UNARY,
-  proto.bpjs.SampleServiceRequest,
-  proto.bpjs.SampleServiceResponse,
+  proto.bpjs.GetParticipantRequest,
+  proto.bpjs.GetParticipantResponse,
   /**
-   * @param {!proto.bpjs.SampleServiceRequest} request
+   * @param {!proto.bpjs.GetParticipantRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.bpjs.SampleServiceResponse.deserializeBinary
+  proto.bpjs.GetParticipantResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.bpjs.SampleServiceRequest} request The
+ * @param {!proto.bpjs.GetParticipantRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.bpjs.SampleServiceResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.bpjs.GetParticipantResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.bpjs.SampleServiceResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.bpjs.GetParticipantResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.bpjs.BPJSServiceClient.prototype.sampleService =
+proto.bpjs.ParticipantServiceClient.prototype.getParticipant =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/bpjs.BPJSService/SampleService',
+      '/bpjs.ParticipantService/GetParticipant',
       request,
       metadata || {},
-      methodDescriptor_BPJSService_SampleService,
+      methodDescriptor_ParticipantService_GetParticipant,
       callback);
 };
 
 
 /**
- * @param {!proto.bpjs.SampleServiceRequest} request The
+ * @param {!proto.bpjs.GetParticipantRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.bpjs.SampleServiceResponse>}
+ * @return {!Promise<!proto.bpjs.GetParticipantResponse>}
  *     Promise that resolves to the response
  */
-proto.bpjs.BPJSServicePromiseClient.prototype.sampleService =
+proto.bpjs.ParticipantServicePromiseClient.prototype.getParticipant =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/bpjs.BPJSService/SampleService',
+      '/bpjs.ParticipantService/GetParticipant',
       request,
       metadata || {},
-      methodDescriptor_BPJSService_SampleService);
+      methodDescriptor_ParticipantService_GetParticipant);
+};
+
+
+/**
+ * @param {string} hostname
+ * @param {?Object} credentials
+ * @param {?grpc.web.ClientOptions} options
+ * @constructor
+ * @struct
+ * @final
+ */
+proto.bpjs.SEPServiceClient =
+    function(hostname, credentials, options) {
+  if (!options) options = {};
+  options.format = 'text';
+
+  /**
+   * @private @const {!grpc.web.GrpcWebClientBase} The client
+   */
+  this.client_ = new grpc.web.GrpcWebClientBase(options);
+
+  /**
+   * @private @const {string} The hostname
+   */
+  this.hostname_ = hostname.replace(/\/+$/, '');
+
+};
+
+
+/**
+ * @param {string} hostname
+ * @param {?Object} credentials
+ * @param {?grpc.web.ClientOptions} options
+ * @constructor
+ * @struct
+ * @final
+ */
+proto.bpjs.SEPServicePromiseClient =
+    function(hostname, credentials, options) {
+  if (!options) options = {};
+  options.format = 'text';
+
+  /**
+   * @private @const {!grpc.web.GrpcWebClientBase} The client
+   */
+  this.client_ = new grpc.web.GrpcWebClientBase(options);
+
+  /**
+   * @private @const {string} The hostname
+   */
+  this.hostname_ = hostname.replace(/\/+$/, '');
+
+};
+
+
+/**
+ * @param {string} hostname
+ * @param {?Object} credentials
+ * @param {?grpc.web.ClientOptions} options
+ * @constructor
+ * @struct
+ * @final
+ */
+proto.bpjs.ReferenceServiceClient =
+    function(hostname, credentials, options) {
+  if (!options) options = {};
+  options.format = 'text';
+
+  /**
+   * @private @const {!grpc.web.GrpcWebClientBase} The client
+   */
+  this.client_ = new grpc.web.GrpcWebClientBase(options);
+
+  /**
+   * @private @const {string} The hostname
+   */
+  this.hostname_ = hostname.replace(/\/+$/, '');
+
+};
+
+
+/**
+ * @param {string} hostname
+ * @param {?Object} credentials
+ * @param {?grpc.web.ClientOptions} options
+ * @constructor
+ * @struct
+ * @final
+ */
+proto.bpjs.ReferenceServicePromiseClient =
+    function(hostname, credentials, options) {
+  if (!options) options = {};
+  options.format = 'text';
+
+  /**
+   * @private @const {!grpc.web.GrpcWebClientBase} The client
+   */
+  this.client_ = new grpc.web.GrpcWebClientBase(options);
+
+  /**
+   * @private @const {string} The hostname
+   */
+  this.hostname_ = hostname.replace(/\/+$/, '');
+
 };
 
 
