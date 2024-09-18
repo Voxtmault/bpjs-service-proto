@@ -18,88 +18,186 @@ import (
 // Requires gRPC-Go v1.32.0 or later.
 const _ = grpc.SupportPackageIsVersion7
 
-// BPJSServiceClient is the client API for BPJSService service.
+// ParticipantServiceClient is the client API for ParticipantService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type BPJSServiceClient interface {
-	SampleService(ctx context.Context, in *SampleServiceRequest, opts ...grpc.CallOption) (*SampleServiceResponse, error)
+type ParticipantServiceClient interface {
+	GetParticipant(ctx context.Context, in *GetParticipantRequest, opts ...grpc.CallOption) (*GetParticipantResponse, error)
 }
 
-type bPJSServiceClient struct {
+type participantServiceClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewBPJSServiceClient(cc grpc.ClientConnInterface) BPJSServiceClient {
-	return &bPJSServiceClient{cc}
+func NewParticipantServiceClient(cc grpc.ClientConnInterface) ParticipantServiceClient {
+	return &participantServiceClient{cc}
 }
 
-func (c *bPJSServiceClient) SampleService(ctx context.Context, in *SampleServiceRequest, opts ...grpc.CallOption) (*SampleServiceResponse, error) {
-	out := new(SampleServiceResponse)
-	err := c.cc.Invoke(ctx, "/bpjs.BPJSService/SampleService", in, out, opts...)
+func (c *participantServiceClient) GetParticipant(ctx context.Context, in *GetParticipantRequest, opts ...grpc.CallOption) (*GetParticipantResponse, error) {
+	out := new(GetParticipantResponse)
+	err := c.cc.Invoke(ctx, "/bpjs.ParticipantService/GetParticipant", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// BPJSServiceServer is the server API for BPJSService service.
-// All implementations must embed UnimplementedBPJSServiceServer
+// ParticipantServiceServer is the server API for ParticipantService service.
+// All implementations must embed UnimplementedParticipantServiceServer
 // for forward compatibility
-type BPJSServiceServer interface {
-	SampleService(context.Context, *SampleServiceRequest) (*SampleServiceResponse, error)
-	mustEmbedUnimplementedBPJSServiceServer()
+type ParticipantServiceServer interface {
+	GetParticipant(context.Context, *GetParticipantRequest) (*GetParticipantResponse, error)
+	mustEmbedUnimplementedParticipantServiceServer()
 }
 
-// UnimplementedBPJSServiceServer must be embedded to have forward compatible implementations.
-type UnimplementedBPJSServiceServer struct {
+// UnimplementedParticipantServiceServer must be embedded to have forward compatible implementations.
+type UnimplementedParticipantServiceServer struct {
 }
 
-func (UnimplementedBPJSServiceServer) SampleService(context.Context, *SampleServiceRequest) (*SampleServiceResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SampleService not implemented")
+func (UnimplementedParticipantServiceServer) GetParticipant(context.Context, *GetParticipantRequest) (*GetParticipantResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetParticipant not implemented")
 }
-func (UnimplementedBPJSServiceServer) mustEmbedUnimplementedBPJSServiceServer() {}
+func (UnimplementedParticipantServiceServer) mustEmbedUnimplementedParticipantServiceServer() {}
 
-// UnsafeBPJSServiceServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to BPJSServiceServer will
+// UnsafeParticipantServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to ParticipantServiceServer will
 // result in compilation errors.
-type UnsafeBPJSServiceServer interface {
-	mustEmbedUnimplementedBPJSServiceServer()
+type UnsafeParticipantServiceServer interface {
+	mustEmbedUnimplementedParticipantServiceServer()
 }
 
-func RegisterBPJSServiceServer(s grpc.ServiceRegistrar, srv BPJSServiceServer) {
-	s.RegisterService(&BPJSService_ServiceDesc, srv)
+func RegisterParticipantServiceServer(s grpc.ServiceRegistrar, srv ParticipantServiceServer) {
+	s.RegisterService(&ParticipantService_ServiceDesc, srv)
 }
 
-func _BPJSService_SampleService_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SampleServiceRequest)
+func _ParticipantService_GetParticipant_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetParticipantRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(BPJSServiceServer).SampleService(ctx, in)
+		return srv.(ParticipantServiceServer).GetParticipant(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/bpjs.BPJSService/SampleService",
+		FullMethod: "/bpjs.ParticipantService/GetParticipant",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BPJSServiceServer).SampleService(ctx, req.(*SampleServiceRequest))
+		return srv.(ParticipantServiceServer).GetParticipant(ctx, req.(*GetParticipantRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// BPJSService_ServiceDesc is the grpc.ServiceDesc for BPJSService service.
+// ParticipantService_ServiceDesc is the grpc.ServiceDesc for ParticipantService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var BPJSService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "bpjs.BPJSService",
-	HandlerType: (*BPJSServiceServer)(nil),
+var ParticipantService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "bpjs.ParticipantService",
+	HandlerType: (*ParticipantServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "SampleService",
-			Handler:    _BPJSService_SampleService_Handler,
+			MethodName: "GetParticipant",
+			Handler:    _ParticipantService_GetParticipant_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "bpjs.proto",
+}
+
+// SEPServiceClient is the client API for SEPService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type SEPServiceClient interface {
+}
+
+type sEPServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewSEPServiceClient(cc grpc.ClientConnInterface) SEPServiceClient {
+	return &sEPServiceClient{cc}
+}
+
+// SEPServiceServer is the server API for SEPService service.
+// All implementations must embed UnimplementedSEPServiceServer
+// for forward compatibility
+type SEPServiceServer interface {
+	mustEmbedUnimplementedSEPServiceServer()
+}
+
+// UnimplementedSEPServiceServer must be embedded to have forward compatible implementations.
+type UnimplementedSEPServiceServer struct {
+}
+
+func (UnimplementedSEPServiceServer) mustEmbedUnimplementedSEPServiceServer() {}
+
+// UnsafeSEPServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to SEPServiceServer will
+// result in compilation errors.
+type UnsafeSEPServiceServer interface {
+	mustEmbedUnimplementedSEPServiceServer()
+}
+
+func RegisterSEPServiceServer(s grpc.ServiceRegistrar, srv SEPServiceServer) {
+	s.RegisterService(&SEPService_ServiceDesc, srv)
+}
+
+// SEPService_ServiceDesc is the grpc.ServiceDesc for SEPService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var SEPService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "bpjs.SEPService",
+	HandlerType: (*SEPServiceServer)(nil),
+	Methods:     []grpc.MethodDesc{},
+	Streams:     []grpc.StreamDesc{},
+	Metadata:    "bpjs.proto",
+}
+
+// ReferenceServiceClient is the client API for ReferenceService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type ReferenceServiceClient interface {
+}
+
+type referenceServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewReferenceServiceClient(cc grpc.ClientConnInterface) ReferenceServiceClient {
+	return &referenceServiceClient{cc}
+}
+
+// ReferenceServiceServer is the server API for ReferenceService service.
+// All implementations must embed UnimplementedReferenceServiceServer
+// for forward compatibility
+type ReferenceServiceServer interface {
+	mustEmbedUnimplementedReferenceServiceServer()
+}
+
+// UnimplementedReferenceServiceServer must be embedded to have forward compatible implementations.
+type UnimplementedReferenceServiceServer struct {
+}
+
+func (UnimplementedReferenceServiceServer) mustEmbedUnimplementedReferenceServiceServer() {}
+
+// UnsafeReferenceServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to ReferenceServiceServer will
+// result in compilation errors.
+type UnsafeReferenceServiceServer interface {
+	mustEmbedUnimplementedReferenceServiceServer()
+}
+
+func RegisterReferenceServiceServer(s grpc.ServiceRegistrar, srv ReferenceServiceServer) {
+	s.RegisterService(&ReferenceService_ServiceDesc, srv)
+}
+
+// ReferenceService_ServiceDesc is the grpc.ServiceDesc for ReferenceService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var ReferenceService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "bpjs.ReferenceService",
+	HandlerType: (*ReferenceServiceServer)(nil),
+	Methods:     []grpc.MethodDesc{},
+	Streams:     []grpc.StreamDesc{},
+	Metadata:    "bpjs.proto",
 }

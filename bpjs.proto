@@ -4,23 +4,34 @@ option go_package = ".";
 
 package bpjs;
 
-service BPJSService {
-    rpc SampleService (SampleServiceRequest) returns (SampleServiceResponse) {}
+// BPJS Will have few services
+// 1. Participant
+// 2. SEP
+// 3. Reference (Rujukan)
+// Others will be added later
+
+service ParticipantService {
+    rpc GetParticipant(GetParticipantRequest) returns (GetParticipantResponse);
 }
 
-message SampleServiceRequest {
-    string sample = 1;
+service SEPService {
 }
 
-message SampleServiceResponse {
-    int32 response_code = 1;
-    string message = 2;
-    SampleStruct data = 3;
+service ReferenceService {
 }
 
-message SampleStruct {
-    string name = 1;
-    int32 age = 2;
-    string address = 3;
-    string phone = 4;
+message GetParticipantRequest {
+    string serviceDate = 1;
+    string bpjsID = 2;
+    string NIK = 3;
+}
+message GetParticipantResponse {
+    int32 status_code = 1;
+    string error_message = 2;
+    string message = 3;
+    Participant participant = 4;
+}
+
+message Participant {
+    string obj = 1;
 }
