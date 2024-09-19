@@ -19,6 +19,8 @@
 const grpc = {};
 grpc.web = require('grpc-web');
 
+
+var participant_pb = require('./participant_pb.js')
 const proto = {};
 proto.bpjs = require('./bpjs_pb.js');
 
