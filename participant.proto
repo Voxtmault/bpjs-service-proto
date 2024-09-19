@@ -6,8 +6,8 @@ package bpjs;
 
 // Model definitions for BPJS Participant
 message COB {
-    string insuraneName = 1;
-    string insuraneNumber = 2;
+    string insuranceName = 1;
+    string insuranceNumber = 2;
     string tatDate = 3;
     string tmtDate = 4;
 }
