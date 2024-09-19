@@ -4,6 +4,8 @@ option go_package = ".";
 
 package bpjs;
 
+import "participant.proto";
+
 // BPJS Will have few services
 // 1. Participant
 // 2. SEP
@@ -29,9 +31,5 @@ message GetParticipantResponse {
     int32 status_code = 1;
     string error_message = 2;
     string message = 3;
-    Participant participant = 4;
-}
-
-message Participant {
-    string obj = 1;
+    BPJSParticipant participant = 4;
 }

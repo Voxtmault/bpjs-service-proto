@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+option go_package = ".";
+
+package bpjs;
+
+// Model definitions for BPJS Participant
+message COB {
+    string insuraneName = 1;
+    string insuraneNumber = 2;
+    string tatDate = 3;
+    string tmtDate = 4;
+}
+
+message Information {
+    string dinsos = 1;
+    string SKTMNumber = 2;
+    string prolanisPRB = 3;
+}
+
+message BPJSMedicalRecord {
+    string MRNumber = 1;
+    string phoneNumber = 2;
+}
+
+message ProvUmum {
+    string providerCode = 1;
+    string providerName = 2;
+}
+
+message PatientAge {
+    string ageNow = 1;
+    string ageAtService = 2;
+}
+
+// Reusable by multiple objects inside the BPJS Participant
+message ReusableNote {
+    string code = 1;
+    string note = 2;
+}
+
+message BPJSParticipant {
+    string name = 1;
+    string nik = 2;
+    string cardNumber = 3;
+    string pisa = 4;
+    string sex = 5;
+    string tatDate = 6;
+    string tmtDate = 7;
+    string dob = 8;
+    string cardPrintDate = 9;
+    COB cob = 10;
+    ReusableNote classRights = 11;
+    Information information = 12;
+    ReusableNote participantType = 13;
+    BPJSMedicalRecord medicalRecord = 14;
+    ProvUmum provUmum = 15;
+    ReusableNote participantStatus = 16;
+    PatientAge age = 17; 
+}

@@ -6,7 +6,7 @@ echo "Generating gRPC Codes"
 export PATH="$PATH:$(go env GOPATH)/bin"
 
 # Generate Go Codes
-protoc --go_out=./go --go-grpc_out=./go bpjs.proto
+protoc --go_out=./go --go-grpc_out=./go bpjs.proto participant.proto
 echo "Go Codes Generated"
 
 # Generate JavaScript code
