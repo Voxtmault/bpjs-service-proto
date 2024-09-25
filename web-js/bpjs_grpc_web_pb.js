@@ -21,6 +21,8 @@ grpc.web = require('grpc-web');
 
 
 var participant_pb = require('./participant_pb.js')
+
+var reference_pb = require('./reference_pb.js')
 const proto = {};
 proto.bpjs = require('./bpjs_pb.js');
 
@@ -238,6 +240,799 @@ proto.bpjs.ReferenceServicePromiseClient =
    */
   this.hostname_ = hostname.replace(/\/+$/, '');
 
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.bpjs.DiagnosisReferenceRequest,
+ *   !proto.bpjs.ReferenceResponse>}
+ */
+const methodDescriptor_ReferenceService_DiagnosisReference = new grpc.web.MethodDescriptor(
+  '/bpjs.ReferenceService/DiagnosisReference',
+  grpc.web.MethodType.UNARY,
+  reference_pb.DiagnosisReferenceRequest,
+  reference_pb.ReferenceResponse,
+  /**
+   * @param {!proto.bpjs.DiagnosisReferenceRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  reference_pb.ReferenceResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.bpjs.DiagnosisReferenceRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.bpjs.ReferenceResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.bpjs.ReferenceResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.bpjs.ReferenceServiceClient.prototype.diagnosisReference =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/bpjs.ReferenceService/DiagnosisReference',
+      request,
+      metadata || {},
+      methodDescriptor_ReferenceService_DiagnosisReference,
+      callback);
+};
+
+
+/**
+ * @param {!proto.bpjs.DiagnosisReferenceRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.bpjs.ReferenceResponse>}
+ *     Promise that resolves to the response
+ */
+proto.bpjs.ReferenceServicePromiseClient.prototype.diagnosisReference =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/bpjs.ReferenceService/DiagnosisReference',
+      request,
+      metadata || {},
+      methodDescriptor_ReferenceService_DiagnosisReference);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.bpjs.DoctorReferenceRequest,
+ *   !proto.bpjs.ReferenceResponse>}
+ */
+const methodDescriptor_ReferenceService_DoctorReference = new grpc.web.MethodDescriptor(
+  '/bpjs.ReferenceService/DoctorReference',
+  grpc.web.MethodType.UNARY,
+  reference_pb.DoctorReferenceRequest,
+  reference_pb.ReferenceResponse,
+  /**
+   * @param {!proto.bpjs.DoctorReferenceRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  reference_pb.ReferenceResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.bpjs.DoctorReferenceRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.bpjs.ReferenceResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.bpjs.ReferenceResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.bpjs.ReferenceServiceClient.prototype.doctorReference =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/bpjs.ReferenceService/DoctorReference',
+      request,
+      metadata || {},
+      methodDescriptor_ReferenceService_DoctorReference,
+      callback);
+};
+
+
+/**
+ * @param {!proto.bpjs.DoctorReferenceRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.bpjs.ReferenceResponse>}
+ *     Promise that resolves to the response
+ */
+proto.bpjs.ReferenceServicePromiseClient.prototype.doctorReference =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/bpjs.ReferenceService/DoctorReference',
+      request,
+      metadata || {},
+      methodDescriptor_ReferenceService_DoctorReference);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.bpjs.PoliclinicsReferenceRequest,
+ *   !proto.bpjs.ReferenceResponse>}
+ */
+const methodDescriptor_ReferenceService_PoliclinicsReference = new grpc.web.MethodDescriptor(
+  '/bpjs.ReferenceService/PoliclinicsReference',
+  grpc.web.MethodType.UNARY,
+  reference_pb.PoliclinicsReferenceRequest,
+  reference_pb.ReferenceResponse,
+  /**
+   * @param {!proto.bpjs.PoliclinicsReferenceRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  reference_pb.ReferenceResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.bpjs.PoliclinicsReferenceRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.bpjs.ReferenceResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.bpjs.ReferenceResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.bpjs.ReferenceServiceClient.prototype.policlinicsReference =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/bpjs.ReferenceService/PoliclinicsReference',
+      request,
+      metadata || {},
+      methodDescriptor_ReferenceService_PoliclinicsReference,
+      callback);
+};
+
+
+/**
+ * @param {!proto.bpjs.PoliclinicsReferenceRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.bpjs.ReferenceResponse>}
+ *     Promise that resolves to the response
+ */
+proto.bpjs.ReferenceServicePromiseClient.prototype.policlinicsReference =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/bpjs.ReferenceService/PoliclinicsReference',
+      request,
+      metadata || {},
+      methodDescriptor_ReferenceService_PoliclinicsReference);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.bpjs.HealthFacilityReferenceRequest,
+ *   !proto.bpjs.ReferenceResponse>}
+ */
+const methodDescriptor_ReferenceService_HealthFacilityReference = new grpc.web.MethodDescriptor(
+  '/bpjs.ReferenceService/HealthFacilityReference',
+  grpc.web.MethodType.UNARY,
+  reference_pb.HealthFacilityReferenceRequest,
+  reference_pb.ReferenceResponse,
+  /**
+   * @param {!proto.bpjs.HealthFacilityReferenceRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  reference_pb.ReferenceResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.bpjs.HealthFacilityReferenceRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.bpjs.ReferenceResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.bpjs.ReferenceResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.bpjs.ReferenceServiceClient.prototype.healthFacilityReference =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/bpjs.ReferenceService/HealthFacilityReference',
+      request,
+      metadata || {},
+      methodDescriptor_ReferenceService_HealthFacilityReference,
+      callback);
+};
+
+
+/**
+ * @param {!proto.bpjs.HealthFacilityReferenceRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.bpjs.ReferenceResponse>}
+ *     Promise that resolves to the response
+ */
+proto.bpjs.ReferenceServicePromiseClient.prototype.healthFacilityReference =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/bpjs.ReferenceService/HealthFacilityReference',
+      request,
+      metadata || {},
+      methodDescriptor_ReferenceService_HealthFacilityReference);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.bpjs.ProcedureReferenceRequest,
+ *   !proto.bpjs.ReferenceResponse>}
+ */
+const methodDescriptor_ReferenceService_ProcedureReference = new grpc.web.MethodDescriptor(
+  '/bpjs.ReferenceService/ProcedureReference',
+  grpc.web.MethodType.UNARY,
+  reference_pb.ProcedureReferenceRequest,
+  reference_pb.ReferenceResponse,
+  /**
+   * @param {!proto.bpjs.ProcedureReferenceRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  reference_pb.ReferenceResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.bpjs.ProcedureReferenceRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.bpjs.ReferenceResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.bpjs.ReferenceResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.bpjs.ReferenceServiceClient.prototype.procedureReference =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/bpjs.ReferenceService/ProcedureReference',
+      request,
+      metadata || {},
+      methodDescriptor_ReferenceService_ProcedureReference,
+      callback);
+};
+
+
+/**
+ * @param {!proto.bpjs.ProcedureReferenceRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.bpjs.ReferenceResponse>}
+ *     Promise that resolves to the response
+ */
+proto.bpjs.ReferenceServicePromiseClient.prototype.procedureReference =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/bpjs.ReferenceService/ProcedureReference',
+      request,
+      metadata || {},
+      methodDescriptor_ReferenceService_ProcedureReference);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.bpjs.ReferenceRequest,
+ *   !proto.bpjs.ReferenceResponse>}
+ */
+const methodDescriptor_ReferenceService_NursingClassReference = new grpc.web.MethodDescriptor(
+  '/bpjs.ReferenceService/NursingClassReference',
+  grpc.web.MethodType.UNARY,
+  reference_pb.ReferenceRequest,
+  reference_pb.ReferenceResponse,
+  /**
+   * @param {!proto.bpjs.ReferenceRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  reference_pb.ReferenceResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.bpjs.ReferenceRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.bpjs.ReferenceResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.bpjs.ReferenceResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.bpjs.ReferenceServiceClient.prototype.nursingClassReference =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/bpjs.ReferenceService/NursingClassReference',
+      request,
+      metadata || {},
+      methodDescriptor_ReferenceService_NursingClassReference,
+      callback);
+};
+
+
+/**
+ * @param {!proto.bpjs.ReferenceRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.bpjs.ReferenceResponse>}
+ *     Promise that resolves to the response
+ */
+proto.bpjs.ReferenceServicePromiseClient.prototype.nursingClassReference =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/bpjs.ReferenceService/NursingClassReference',
+      request,
+      metadata || {},
+      methodDescriptor_ReferenceService_NursingClassReference);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.bpjs.ReferenceRequest,
+ *   !proto.bpjs.ReferenceResponse>}
+ */
+const methodDescriptor_ReferenceService_SpecialistReference = new grpc.web.MethodDescriptor(
+  '/bpjs.ReferenceService/SpecialistReference',
+  grpc.web.MethodType.UNARY,
+  reference_pb.ReferenceRequest,
+  reference_pb.ReferenceResponse,
+  /**
+   * @param {!proto.bpjs.ReferenceRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  reference_pb.ReferenceResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.bpjs.ReferenceRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.bpjs.ReferenceResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.bpjs.ReferenceResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.bpjs.ReferenceServiceClient.prototype.specialistReference =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/bpjs.ReferenceService/SpecialistReference',
+      request,
+      metadata || {},
+      methodDescriptor_ReferenceService_SpecialistReference,
+      callback);
+};
+
+
+/**
+ * @param {!proto.bpjs.ReferenceRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.bpjs.ReferenceResponse>}
+ *     Promise that resolves to the response
+ */
+proto.bpjs.ReferenceServicePromiseClient.prototype.specialistReference =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/bpjs.ReferenceService/SpecialistReference',
+      request,
+      metadata || {},
+      methodDescriptor_ReferenceService_SpecialistReference);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.bpjs.ReferenceRequest,
+ *   !proto.bpjs.ReferenceResponse>}
+ */
+const methodDescriptor_ReferenceService_DischargeMethodReference = new grpc.web.MethodDescriptor(
+  '/bpjs.ReferenceService/DischargeMethodReference',
+  grpc.web.MethodType.UNARY,
+  reference_pb.ReferenceRequest,
+  reference_pb.ReferenceResponse,
+  /**
+   * @param {!proto.bpjs.ReferenceRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  reference_pb.ReferenceResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.bpjs.ReferenceRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.bpjs.ReferenceResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.bpjs.ReferenceResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.bpjs.ReferenceServiceClient.prototype.dischargeMethodReference =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/bpjs.ReferenceService/DischargeMethodReference',
+      request,
+      metadata || {},
+      methodDescriptor_ReferenceService_DischargeMethodReference,
+      callback);
+};
+
+
+/**
+ * @param {!proto.bpjs.ReferenceRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.bpjs.ReferenceResponse>}
+ *     Promise that resolves to the response
+ */
+proto.bpjs.ReferenceServicePromiseClient.prototype.dischargeMethodReference =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/bpjs.ReferenceService/DischargeMethodReference',
+      request,
+      metadata || {},
+      methodDescriptor_ReferenceService_DischargeMethodReference);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.bpjs.ReferenceRequest,
+ *   !proto.bpjs.ReferenceResponse>}
+ */
+const methodDescriptor_ReferenceService_PostDischargeReference = new grpc.web.MethodDescriptor(
+  '/bpjs.ReferenceService/PostDischargeReference',
+  grpc.web.MethodType.UNARY,
+  reference_pb.ReferenceRequest,
+  reference_pb.ReferenceResponse,
+  /**
+   * @param {!proto.bpjs.ReferenceRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  reference_pb.ReferenceResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.bpjs.ReferenceRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.bpjs.ReferenceResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.bpjs.ReferenceResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.bpjs.ReferenceServiceClient.prototype.postDischargeReference =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/bpjs.ReferenceService/PostDischargeReference',
+      request,
+      metadata || {},
+      methodDescriptor_ReferenceService_PostDischargeReference,
+      callback);
+};
+
+
+/**
+ * @param {!proto.bpjs.ReferenceRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.bpjs.ReferenceResponse>}
+ *     Promise that resolves to the response
+ */
+proto.bpjs.ReferenceServicePromiseClient.prototype.postDischargeReference =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/bpjs.ReferenceService/PostDischargeReference',
+      request,
+      metadata || {},
+      methodDescriptor_ReferenceService_PostDischargeReference);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.bpjs.ReferenceRequest,
+ *   !proto.bpjs.ReferenceResponse>}
+ */
+const methodDescriptor_ReferenceService_ProvinceReference = new grpc.web.MethodDescriptor(
+  '/bpjs.ReferenceService/ProvinceReference',
+  grpc.web.MethodType.UNARY,
+  reference_pb.ReferenceRequest,
+  reference_pb.ReferenceResponse,
+  /**
+   * @param {!proto.bpjs.ReferenceRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  reference_pb.ReferenceResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.bpjs.ReferenceRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.bpjs.ReferenceResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.bpjs.ReferenceResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.bpjs.ReferenceServiceClient.prototype.provinceReference =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/bpjs.ReferenceService/ProvinceReference',
+      request,
+      metadata || {},
+      methodDescriptor_ReferenceService_ProvinceReference,
+      callback);
+};
+
+
+/**
+ * @param {!proto.bpjs.ReferenceRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.bpjs.ReferenceResponse>}
+ *     Promise that resolves to the response
+ */
+proto.bpjs.ReferenceServicePromiseClient.prototype.provinceReference =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/bpjs.ReferenceService/ProvinceReference',
+      request,
+      metadata || {},
+      methodDescriptor_ReferenceService_ProvinceReference);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.bpjs.RegencyReferenceRequest,
+ *   !proto.bpjs.ReferenceResponse>}
+ */
+const methodDescriptor_ReferenceService_RegencyReference = new grpc.web.MethodDescriptor(
+  '/bpjs.ReferenceService/RegencyReference',
+  grpc.web.MethodType.UNARY,
+  reference_pb.RegencyReferenceRequest,
+  reference_pb.ReferenceResponse,
+  /**
+   * @param {!proto.bpjs.RegencyReferenceRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  reference_pb.ReferenceResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.bpjs.RegencyReferenceRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.bpjs.ReferenceResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.bpjs.ReferenceResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.bpjs.ReferenceServiceClient.prototype.regencyReference =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/bpjs.ReferenceService/RegencyReference',
+      request,
+      metadata || {},
+      methodDescriptor_ReferenceService_RegencyReference,
+      callback);
+};
+
+
+/**
+ * @param {!proto.bpjs.RegencyReferenceRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.bpjs.ReferenceResponse>}
+ *     Promise that resolves to the response
+ */
+proto.bpjs.ReferenceServicePromiseClient.prototype.regencyReference =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/bpjs.ReferenceService/RegencyReference',
+      request,
+      metadata || {},
+      methodDescriptor_ReferenceService_RegencyReference);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.bpjs.DistrictReferenceRequest,
+ *   !proto.bpjs.ReferenceResponse>}
+ */
+const methodDescriptor_ReferenceService_DistrictReference = new grpc.web.MethodDescriptor(
+  '/bpjs.ReferenceService/DistrictReference',
+  grpc.web.MethodType.UNARY,
+  reference_pb.DistrictReferenceRequest,
+  reference_pb.ReferenceResponse,
+  /**
+   * @param {!proto.bpjs.DistrictReferenceRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  reference_pb.ReferenceResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.bpjs.DistrictReferenceRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.bpjs.ReferenceResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.bpjs.ReferenceResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.bpjs.ReferenceServiceClient.prototype.districtReference =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/bpjs.ReferenceService/DistrictReference',
+      request,
+      metadata || {},
+      methodDescriptor_ReferenceService_DistrictReference,
+      callback);
+};
+
+
+/**
+ * @param {!proto.bpjs.DistrictReferenceRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.bpjs.ReferenceResponse>}
+ *     Promise that resolves to the response
+ */
+proto.bpjs.ReferenceServicePromiseClient.prototype.districtReference =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/bpjs.ReferenceService/DistrictReference',
+      request,
+      metadata || {},
+      methodDescriptor_ReferenceService_DistrictReference);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.bpjs.AttendingPhysicianReferenceRequest,
+ *   !proto.bpjs.ReferenceResponse>}
+ */
+const methodDescriptor_ReferenceService_AttendingPhysicianReference = new grpc.web.MethodDescriptor(
+  '/bpjs.ReferenceService/AttendingPhysicianReference',
+  grpc.web.MethodType.UNARY,
+  reference_pb.AttendingPhysicianReferenceRequest,
+  reference_pb.ReferenceResponse,
+  /**
+   * @param {!proto.bpjs.AttendingPhysicianReferenceRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  reference_pb.ReferenceResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.bpjs.AttendingPhysicianReferenceRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.bpjs.ReferenceResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.bpjs.ReferenceResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.bpjs.ReferenceServiceClient.prototype.attendingPhysicianReference =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/bpjs.ReferenceService/AttendingPhysicianReference',
+      request,
+      metadata || {},
+      methodDescriptor_ReferenceService_AttendingPhysicianReference,
+      callback);
+};
+
+
+/**
+ * @param {!proto.bpjs.AttendingPhysicianReferenceRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.bpjs.ReferenceResponse>}
+ *     Promise that resolves to the response
+ */
+proto.bpjs.ReferenceServicePromiseClient.prototype.attendingPhysicianReference =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/bpjs.ReferenceService/AttendingPhysicianReference',
+      request,
+      metadata || {},
+      methodDescriptor_ReferenceService_AttendingPhysicianReference);
 };
 
 

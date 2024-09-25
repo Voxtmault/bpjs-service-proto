@@ -157,6 +157,19 @@ var SEPService_ServiceDesc = grpc.ServiceDesc{
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ReferenceServiceClient interface {
+	DiagnosisReference(ctx context.Context, in *DiagnosisReferenceRequest, opts ...grpc.CallOption) (*ReferenceResponse, error)
+	DoctorReference(ctx context.Context, in *DoctorReferenceRequest, opts ...grpc.CallOption) (*ReferenceResponse, error)
+	PoliclinicsReference(ctx context.Context, in *PoliclinicsReferenceRequest, opts ...grpc.CallOption) (*ReferenceResponse, error)
+	HealthFacilityReference(ctx context.Context, in *HealthFacilityReferenceRequest, opts ...grpc.CallOption) (*ReferenceResponse, error)
+	ProcedureReference(ctx context.Context, in *ProcedureReferenceRequest, opts ...grpc.CallOption) (*ReferenceResponse, error)
+	NursingClassReference(ctx context.Context, in *ReferenceRequest, opts ...grpc.CallOption) (*ReferenceResponse, error)
+	SpecialistReference(ctx context.Context, in *ReferenceRequest, opts ...grpc.CallOption) (*ReferenceResponse, error)
+	DischargeMethodReference(ctx context.Context, in *ReferenceRequest, opts ...grpc.CallOption) (*ReferenceResponse, error)
+	PostDischargeReference(ctx context.Context, in *ReferenceRequest, opts ...grpc.CallOption) (*ReferenceResponse, error)
+	ProvinceReference(ctx context.Context, in *ReferenceRequest, opts ...grpc.CallOption) (*ReferenceResponse, error)
+	RegencyReference(ctx context.Context, in *RegencyReferenceRequest, opts ...grpc.CallOption) (*ReferenceResponse, error)
+	DistrictReference(ctx context.Context, in *DistrictReferenceRequest, opts ...grpc.CallOption) (*ReferenceResponse, error)
+	AttendingPhysicianReference(ctx context.Context, in *AttendingPhysicianReferenceRequest, opts ...grpc.CallOption) (*ReferenceResponse, error)
 }
 
 type referenceServiceClient struct {
@@ -167,10 +180,140 @@ func NewReferenceServiceClient(cc grpc.ClientConnInterface) ReferenceServiceClie
 	return &referenceServiceClient{cc}
 }
 
+func (c *referenceServiceClient) DiagnosisReference(ctx context.Context, in *DiagnosisReferenceRequest, opts ...grpc.CallOption) (*ReferenceResponse, error) {
+	out := new(ReferenceResponse)
+	err := c.cc.Invoke(ctx, "/bpjs.ReferenceService/DiagnosisReference", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *referenceServiceClient) DoctorReference(ctx context.Context, in *DoctorReferenceRequest, opts ...grpc.CallOption) (*ReferenceResponse, error) {
+	out := new(ReferenceResponse)
+	err := c.cc.Invoke(ctx, "/bpjs.ReferenceService/DoctorReference", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *referenceServiceClient) PoliclinicsReference(ctx context.Context, in *PoliclinicsReferenceRequest, opts ...grpc.CallOption) (*ReferenceResponse, error) {
+	out := new(ReferenceResponse)
+	err := c.cc.Invoke(ctx, "/bpjs.ReferenceService/PoliclinicsReference", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *referenceServiceClient) HealthFacilityReference(ctx context.Context, in *HealthFacilityReferenceRequest, opts ...grpc.CallOption) (*ReferenceResponse, error) {
+	out := new(ReferenceResponse)
+	err := c.cc.Invoke(ctx, "/bpjs.ReferenceService/HealthFacilityReference", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *referenceServiceClient) ProcedureReference(ctx context.Context, in *ProcedureReferenceRequest, opts ...grpc.CallOption) (*ReferenceResponse, error) {
+	out := new(ReferenceResponse)
+	err := c.cc.Invoke(ctx, "/bpjs.ReferenceService/ProcedureReference", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *referenceServiceClient) NursingClassReference(ctx context.Context, in *ReferenceRequest, opts ...grpc.CallOption) (*ReferenceResponse, error) {
+	out := new(ReferenceResponse)
+	err := c.cc.Invoke(ctx, "/bpjs.ReferenceService/NursingClassReference", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *referenceServiceClient) SpecialistReference(ctx context.Context, in *ReferenceRequest, opts ...grpc.CallOption) (*ReferenceResponse, error) {
+	out := new(ReferenceResponse)
+	err := c.cc.Invoke(ctx, "/bpjs.ReferenceService/SpecialistReference", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *referenceServiceClient) DischargeMethodReference(ctx context.Context, in *ReferenceRequest, opts ...grpc.CallOption) (*ReferenceResponse, error) {
+	out := new(ReferenceResponse)
+	err := c.cc.Invoke(ctx, "/bpjs.ReferenceService/DischargeMethodReference", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *referenceServiceClient) PostDischargeReference(ctx context.Context, in *ReferenceRequest, opts ...grpc.CallOption) (*ReferenceResponse, error) {
+	out := new(ReferenceResponse)
+	err := c.cc.Invoke(ctx, "/bpjs.ReferenceService/PostDischargeReference", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *referenceServiceClient) ProvinceReference(ctx context.Context, in *ReferenceRequest, opts ...grpc.CallOption) (*ReferenceResponse, error) {
+	out := new(ReferenceResponse)
+	err := c.cc.Invoke(ctx, "/bpjs.ReferenceService/ProvinceReference", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *referenceServiceClient) RegencyReference(ctx context.Context, in *RegencyReferenceRequest, opts ...grpc.CallOption) (*ReferenceResponse, error) {
+	out := new(ReferenceResponse)
+	err := c.cc.Invoke(ctx, "/bpjs.ReferenceService/RegencyReference", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *referenceServiceClient) DistrictReference(ctx context.Context, in *DistrictReferenceRequest, opts ...grpc.CallOption) (*ReferenceResponse, error) {
+	out := new(ReferenceResponse)
+	err := c.cc.Invoke(ctx, "/bpjs.ReferenceService/DistrictReference", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *referenceServiceClient) AttendingPhysicianReference(ctx context.Context, in *AttendingPhysicianReferenceRequest, opts ...grpc.CallOption) (*ReferenceResponse, error) {
+	out := new(ReferenceResponse)
+	err := c.cc.Invoke(ctx, "/bpjs.ReferenceService/AttendingPhysicianReference", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ReferenceServiceServer is the server API for ReferenceService service.
 // All implementations must embed UnimplementedReferenceServiceServer
 // for forward compatibility
 type ReferenceServiceServer interface {
+	DiagnosisReference(context.Context, *DiagnosisReferenceRequest) (*ReferenceResponse, error)
+	DoctorReference(context.Context, *DoctorReferenceRequest) (*ReferenceResponse, error)
+	PoliclinicsReference(context.Context, *PoliclinicsReferenceRequest) (*ReferenceResponse, error)
+	HealthFacilityReference(context.Context, *HealthFacilityReferenceRequest) (*ReferenceResponse, error)
+	ProcedureReference(context.Context, *ProcedureReferenceRequest) (*ReferenceResponse, error)
+	NursingClassReference(context.Context, *ReferenceRequest) (*ReferenceResponse, error)
+	SpecialistReference(context.Context, *ReferenceRequest) (*ReferenceResponse, error)
+	DischargeMethodReference(context.Context, *ReferenceRequest) (*ReferenceResponse, error)
+	PostDischargeReference(context.Context, *ReferenceRequest) (*ReferenceResponse, error)
+	ProvinceReference(context.Context, *ReferenceRequest) (*ReferenceResponse, error)
+	RegencyReference(context.Context, *RegencyReferenceRequest) (*ReferenceResponse, error)
+	DistrictReference(context.Context, *DistrictReferenceRequest) (*ReferenceResponse, error)
+	AttendingPhysicianReference(context.Context, *AttendingPhysicianReferenceRequest) (*ReferenceResponse, error)
 	mustEmbedUnimplementedReferenceServiceServer()
 }
 
@@ -178,6 +321,45 @@ type ReferenceServiceServer interface {
 type UnimplementedReferenceServiceServer struct {
 }
 
+func (UnimplementedReferenceServiceServer) DiagnosisReference(context.Context, *DiagnosisReferenceRequest) (*ReferenceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DiagnosisReference not implemented")
+}
+func (UnimplementedReferenceServiceServer) DoctorReference(context.Context, *DoctorReferenceRequest) (*ReferenceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DoctorReference not implemented")
+}
+func (UnimplementedReferenceServiceServer) PoliclinicsReference(context.Context, *PoliclinicsReferenceRequest) (*ReferenceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PoliclinicsReference not implemented")
+}
+func (UnimplementedReferenceServiceServer) HealthFacilityReference(context.Context, *HealthFacilityReferenceRequest) (*ReferenceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method HealthFacilityReference not implemented")
+}
+func (UnimplementedReferenceServiceServer) ProcedureReference(context.Context, *ProcedureReferenceRequest) (*ReferenceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ProcedureReference not implemented")
+}
+func (UnimplementedReferenceServiceServer) NursingClassReference(context.Context, *ReferenceRequest) (*ReferenceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method NursingClassReference not implemented")
+}
+func (UnimplementedReferenceServiceServer) SpecialistReference(context.Context, *ReferenceRequest) (*ReferenceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SpecialistReference not implemented")
+}
+func (UnimplementedReferenceServiceServer) DischargeMethodReference(context.Context, *ReferenceRequest) (*ReferenceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DischargeMethodReference not implemented")
+}
+func (UnimplementedReferenceServiceServer) PostDischargeReference(context.Context, *ReferenceRequest) (*ReferenceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PostDischargeReference not implemented")
+}
+func (UnimplementedReferenceServiceServer) ProvinceReference(context.Context, *ReferenceRequest) (*ReferenceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ProvinceReference not implemented")
+}
+func (UnimplementedReferenceServiceServer) RegencyReference(context.Context, *RegencyReferenceRequest) (*ReferenceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RegencyReference not implemented")
+}
+func (UnimplementedReferenceServiceServer) DistrictReference(context.Context, *DistrictReferenceRequest) (*ReferenceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DistrictReference not implemented")
+}
+func (UnimplementedReferenceServiceServer) AttendingPhysicianReference(context.Context, *AttendingPhysicianReferenceRequest) (*ReferenceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AttendingPhysicianReference not implemented")
+}
 func (UnimplementedReferenceServiceServer) mustEmbedUnimplementedReferenceServiceServer() {}
 
 // UnsafeReferenceServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -191,13 +373,300 @@ func RegisterReferenceServiceServer(s grpc.ServiceRegistrar, srv ReferenceServic
 	s.RegisterService(&ReferenceService_ServiceDesc, srv)
 }
 
+func _ReferenceService_DiagnosisReference_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DiagnosisReferenceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ReferenceServiceServer).DiagnosisReference(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/bpjs.ReferenceService/DiagnosisReference",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ReferenceServiceServer).DiagnosisReference(ctx, req.(*DiagnosisReferenceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ReferenceService_DoctorReference_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DoctorReferenceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ReferenceServiceServer).DoctorReference(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/bpjs.ReferenceService/DoctorReference",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ReferenceServiceServer).DoctorReference(ctx, req.(*DoctorReferenceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ReferenceService_PoliclinicsReference_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PoliclinicsReferenceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ReferenceServiceServer).PoliclinicsReference(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/bpjs.ReferenceService/PoliclinicsReference",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ReferenceServiceServer).PoliclinicsReference(ctx, req.(*PoliclinicsReferenceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ReferenceService_HealthFacilityReference_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(HealthFacilityReferenceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ReferenceServiceServer).HealthFacilityReference(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/bpjs.ReferenceService/HealthFacilityReference",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ReferenceServiceServer).HealthFacilityReference(ctx, req.(*HealthFacilityReferenceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ReferenceService_ProcedureReference_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ProcedureReferenceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ReferenceServiceServer).ProcedureReference(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/bpjs.ReferenceService/ProcedureReference",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ReferenceServiceServer).ProcedureReference(ctx, req.(*ProcedureReferenceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ReferenceService_NursingClassReference_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ReferenceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ReferenceServiceServer).NursingClassReference(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/bpjs.ReferenceService/NursingClassReference",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ReferenceServiceServer).NursingClassReference(ctx, req.(*ReferenceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ReferenceService_SpecialistReference_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ReferenceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ReferenceServiceServer).SpecialistReference(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/bpjs.ReferenceService/SpecialistReference",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ReferenceServiceServer).SpecialistReference(ctx, req.(*ReferenceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ReferenceService_DischargeMethodReference_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ReferenceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ReferenceServiceServer).DischargeMethodReference(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/bpjs.ReferenceService/DischargeMethodReference",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ReferenceServiceServer).DischargeMethodReference(ctx, req.(*ReferenceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ReferenceService_PostDischargeReference_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ReferenceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ReferenceServiceServer).PostDischargeReference(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/bpjs.ReferenceService/PostDischargeReference",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ReferenceServiceServer).PostDischargeReference(ctx, req.(*ReferenceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ReferenceService_ProvinceReference_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ReferenceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ReferenceServiceServer).ProvinceReference(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/bpjs.ReferenceService/ProvinceReference",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ReferenceServiceServer).ProvinceReference(ctx, req.(*ReferenceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ReferenceService_RegencyReference_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RegencyReferenceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ReferenceServiceServer).RegencyReference(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/bpjs.ReferenceService/RegencyReference",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ReferenceServiceServer).RegencyReference(ctx, req.(*RegencyReferenceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ReferenceService_DistrictReference_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DistrictReferenceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ReferenceServiceServer).DistrictReference(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/bpjs.ReferenceService/DistrictReference",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ReferenceServiceServer).DistrictReference(ctx, req.(*DistrictReferenceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ReferenceService_AttendingPhysicianReference_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AttendingPhysicianReferenceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ReferenceServiceServer).AttendingPhysicianReference(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/bpjs.ReferenceService/AttendingPhysicianReference",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ReferenceServiceServer).AttendingPhysicianReference(ctx, req.(*AttendingPhysicianReferenceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ReferenceService_ServiceDesc is the grpc.ServiceDesc for ReferenceService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var ReferenceService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "bpjs.ReferenceService",
 	HandlerType: (*ReferenceServiceServer)(nil),
-	Methods:     []grpc.MethodDesc{},
-	Streams:     []grpc.StreamDesc{},
-	Metadata:    "bpjs.proto",
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "DiagnosisReference",
+			Handler:    _ReferenceService_DiagnosisReference_Handler,
+		},
+		{
+			MethodName: "DoctorReference",
+			Handler:    _ReferenceService_DoctorReference_Handler,
+		},
+		{
+			MethodName: "PoliclinicsReference",
+			Handler:    _ReferenceService_PoliclinicsReference_Handler,
+		},
+		{
+			MethodName: "HealthFacilityReference",
+			Handler:    _ReferenceService_HealthFacilityReference_Handler,
+		},
+		{
+			MethodName: "ProcedureReference",
+			Handler:    _ReferenceService_ProcedureReference_Handler,
+		},
+		{
+			MethodName: "NursingClassReference",
+			Handler:    _ReferenceService_NursingClassReference_Handler,
+		},
+		{
+			MethodName: "SpecialistReference",
+			Handler:    _ReferenceService_SpecialistReference_Handler,
+		},
+		{
+			MethodName: "DischargeMethodReference",
+			Handler:    _ReferenceService_DischargeMethodReference_Handler,
+		},
+		{
+			MethodName: "PostDischargeReference",
+			Handler:    _ReferenceService_PostDischargeReference_Handler,
+		},
+		{
+			MethodName: "ProvinceReference",
+			Handler:    _ReferenceService_ProvinceReference_Handler,
+		},
+		{
+			MethodName: "RegencyReference",
+			Handler:    _ReferenceService_RegencyReference_Handler,
+		},
+		{
+			MethodName: "DistrictReference",
+			Handler:    _ReferenceService_DistrictReference_Handler,
+		},
+		{
+			MethodName: "AttendingPhysicianReference",
+			Handler:    _ReferenceService_AttendingPhysicianReference_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "bpjs.proto",
 }

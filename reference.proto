@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+option go_package = ".";
+
+package bpjs;
+
+// Model definitions for BPJS Reference
+message Reference {
+    string Code = 1;
+    string Name = 2;
+}
+
+// Reusable Request Template, Empty or Does not need a parameter
+message ReferenceRequest {
+
+}
+
+// Reusable Response Template
+message ReferenceResponse {
+    int32 status_code = 1;
+    string error_message = 2;
+    string message = 3;
+    repeated Reference reference = 4;
+}
+
+message DiagnosisReferenceRequest {
+    string diagnosisCode = 1; // ICD-10 Code, Minimal 3 Characters
+}
+
+message DoctorReferenceRequest {
+    string serviceType = 1;
+    string serviceDate = 2;
+    string specialistCode = 3;
+}
+
+message PoliclinicsReferenceRequest {
+    string poliCode = 1;
+    string poliName = 2;
+}
+
+message HealthFacilityReferenceRequest {
+    string hcName = 1;
+    string hcType = 2;
+}
+
+message ProcedureReferenceRequest {
+    string procedureCode = 1; // ICD-9 Code, Minimal 3 Characters
+}
+
+message RegencyReferenceRequest {
+    string provinceCode = 1;
+}
+
+message DistrictReferenceRequest {
+    string regencyCode = 1;
+}
+
+message AttendingPhysicianReferenceRequest {
+    string doctorCode = 1;
+}

@@ -6,13 +6,13 @@ echo "Generating gRPC Codes"
 export PATH="$PATH:$(go env GOPATH)/bin"
 
 # Generate Go Codes
-protoc --go_out=./go --go-grpc_out=./go bpjs.proto participant.proto
+protoc --go_out=./go --go-grpc_out=./go bpjs.proto participant.proto reference.proto
 echo "Go Codes Generated"
 
 # Generate JavaScript code
-protoc --js_out=import_style=commonjs,binary:./js bpjs.proto
+protoc --js_out=import_style=commonjs,binary:./js bpjs.proto participant.proto reference.proto
 echo "JS Code Generated"
 
 # Generate gRPC-Web code
-protoc --grpc-web_out=import_style=commonjs,mode=grpcwebtext:./web-js bpjs.proto
+protoc --grpc-web_out=import_style=commonjs,mode=grpcwebtext:./web-js bpjs.proto participant.proto reference.proto
 echo "JS Web Generated"
