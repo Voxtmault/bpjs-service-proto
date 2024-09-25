@@ -5,6 +5,7 @@ option go_package = ".";
 package bpjs;
 
 import "participant.proto";
+import "reference.proto";
 
 // BPJS Will have few services
 // 1. Participant
@@ -20,6 +21,19 @@ service SEPService {
 }
 
 service ReferenceService {
+    rpc DiagnosisReference(DiagnosisReferenceRequest) returns (ReferenceResponse);
+    rpc DoctorReference(DoctorReferenceRequest) returns (ReferenceResponse);
+    rpc PoliclinicsReference(PoliclinicsReferenceRequest) returns (ReferenceResponse);
+    rpc HealthFacilityReference(HealthFacilityReferenceRequest) returns (ReferenceResponse);
+    rpc ProcedureReference(ProcedureReferenceRequest) returns (ReferenceResponse);
+    rpc NursingClassReference(ReferenceRequest) returns (ReferenceResponse);
+    rpc SpecialistReference(ReferenceRequest) returns (ReferenceResponse);
+    rpc DischargeMethodReference(ReferenceRequest) returns (ReferenceResponse);
+    rpc PostDischargeReference(ReferenceRequest) returns (ReferenceResponse);
+    rpc ProvinceReference(ReferenceRequest) returns (ReferenceResponse);
+    rpc RegencyReference(RegencyReferenceRequest) returns (ReferenceResponse);
+    rpc DistrictReference(DistrictReferenceRequest) returns (ReferenceResponse);
+    rpc AttendingPhysicianReference(AttendingPhysicianReferenceRequest) returns (ReferenceResponse);
 }
 
 message GetParticipantRequest {
@@ -33,3 +47,4 @@ message GetParticipantResponse {
     string message = 3;
     BPJSParticipant participant = 4;
 }
+
