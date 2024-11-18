@@ -23,6 +23,8 @@ grpc.web = require('grpc-web');
 var participant_pb = require('./participant_pb.js')
 
 var reference_pb = require('./reference_pb.js')
+
+var sep_pb = require('./sep_pb.js')
 const proto = {};
 proto.bpjs = require('./bpjs_pb.js');
 
@@ -188,6 +190,128 @@ proto.bpjs.SEPServicePromiseClient =
    */
   this.hostname_ = hostname.replace(/\/+$/, '');
 
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.bpjs.SEPCreateRequest,
+ *   !proto.bpjs.SEPCreateResponse>}
+ */
+const methodDescriptor_SEPService_CreateSEP = new grpc.web.MethodDescriptor(
+  '/bpjs.SEPService/CreateSEP',
+  grpc.web.MethodType.UNARY,
+  sep_pb.SEPCreateRequest,
+  sep_pb.SEPCreateResponse,
+  /**
+   * @param {!proto.bpjs.SEPCreateRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  sep_pb.SEPCreateResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.bpjs.SEPCreateRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.bpjs.SEPCreateResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.bpjs.SEPCreateResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.bpjs.SEPServiceClient.prototype.createSEP =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/bpjs.SEPService/CreateSEP',
+      request,
+      metadata || {},
+      methodDescriptor_SEPService_CreateSEP,
+      callback);
+};
+
+
+/**
+ * @param {!proto.bpjs.SEPCreateRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.bpjs.SEPCreateResponse>}
+ *     Promise that resolves to the response
+ */
+proto.bpjs.SEPServicePromiseClient.prototype.createSEP =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/bpjs.SEPService/CreateSEP',
+      request,
+      metadata || {},
+      methodDescriptor_SEPService_CreateSEP);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.bpjs.SEPGetRequest,
+ *   !proto.bpjs.SEPGetResponse>}
+ */
+const methodDescriptor_SEPService_GetSEP = new grpc.web.MethodDescriptor(
+  '/bpjs.SEPService/GetSEP',
+  grpc.web.MethodType.UNARY,
+  sep_pb.SEPGetRequest,
+  sep_pb.SEPGetResponse,
+  /**
+   * @param {!proto.bpjs.SEPGetRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  sep_pb.SEPGetResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.bpjs.SEPGetRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.bpjs.SEPGetResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.bpjs.SEPGetResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.bpjs.SEPServiceClient.prototype.getSEP =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/bpjs.SEPService/GetSEP',
+      request,
+      metadata || {},
+      methodDescriptor_SEPService_GetSEP,
+      callback);
+};
+
+
+/**
+ * @param {!proto.bpjs.SEPGetRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.bpjs.SEPGetResponse>}
+ *     Promise that resolves to the response
+ */
+proto.bpjs.SEPServicePromiseClient.prototype.getSEP =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/bpjs.SEPService/GetSEP',
+      request,
+      metadata || {},
+      methodDescriptor_SEPService_GetSEP);
 };
 
 

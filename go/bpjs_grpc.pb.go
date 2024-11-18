@@ -108,6 +108,8 @@ var ParticipantService_ServiceDesc = grpc.ServiceDesc{
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type SEPServiceClient interface {
+	CreateSEP(ctx context.Context, in *SEPCreateRequest, opts ...grpc.CallOption) (*SEPCreateResponse, error)
+	GetSEP(ctx context.Context, in *SEPGetRequest, opts ...grpc.CallOption) (*SEPGetResponse, error)
 }
 
 type sEPServiceClient struct {
@@ -118,10 +120,30 @@ func NewSEPServiceClient(cc grpc.ClientConnInterface) SEPServiceClient {
 	return &sEPServiceClient{cc}
 }
 
+func (c *sEPServiceClient) CreateSEP(ctx context.Context, in *SEPCreateRequest, opts ...grpc.CallOption) (*SEPCreateResponse, error) {
+	out := new(SEPCreateResponse)
+	err := c.cc.Invoke(ctx, "/bpjs.SEPService/CreateSEP", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *sEPServiceClient) GetSEP(ctx context.Context, in *SEPGetRequest, opts ...grpc.CallOption) (*SEPGetResponse, error) {
+	out := new(SEPGetResponse)
+	err := c.cc.Invoke(ctx, "/bpjs.SEPService/GetSEP", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // SEPServiceServer is the server API for SEPService service.
 // All implementations must embed UnimplementedSEPServiceServer
 // for forward compatibility
 type SEPServiceServer interface {
+	CreateSEP(context.Context, *SEPCreateRequest) (*SEPCreateResponse, error)
+	GetSEP(context.Context, *SEPGetRequest) (*SEPGetResponse, error)
 	mustEmbedUnimplementedSEPServiceServer()
 }
 
@@ -129,6 +151,12 @@ type SEPServiceServer interface {
 type UnimplementedSEPServiceServer struct {
 }
 
+func (UnimplementedSEPServiceServer) CreateSEP(context.Context, *SEPCreateRequest) (*SEPCreateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateSEP not implemented")
+}
+func (UnimplementedSEPServiceServer) GetSEP(context.Context, *SEPGetRequest) (*SEPGetResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetSEP not implemented")
+}
 func (UnimplementedSEPServiceServer) mustEmbedUnimplementedSEPServiceServer() {}
 
 // UnsafeSEPServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -142,15 +170,60 @@ func RegisterSEPServiceServer(s grpc.ServiceRegistrar, srv SEPServiceServer) {
 	s.RegisterService(&SEPService_ServiceDesc, srv)
 }
 
+func _SEPService_CreateSEP_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SEPCreateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SEPServiceServer).CreateSEP(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/bpjs.SEPService/CreateSEP",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SEPServiceServer).CreateSEP(ctx, req.(*SEPCreateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SEPService_GetSEP_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SEPGetRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SEPServiceServer).GetSEP(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/bpjs.SEPService/GetSEP",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SEPServiceServer).GetSEP(ctx, req.(*SEPGetRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // SEPService_ServiceDesc is the grpc.ServiceDesc for SEPService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var SEPService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "bpjs.SEPService",
 	HandlerType: (*SEPServiceServer)(nil),
-	Methods:     []grpc.MethodDesc{},
-	Streams:     []grpc.StreamDesc{},
-	Metadata:    "bpjs.proto",
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "CreateSEP",
+			Handler:    _SEPService_CreateSEP_Handler,
+		},
+		{
+			MethodName: "GetSEP",
+			Handler:    _SEPService_GetSEP_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "bpjs.proto",
 }
 
 // ReferenceServiceClient is the client API for ReferenceService service.
