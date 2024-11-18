@@ -25,6 +25,8 @@ var participant_pb = require('./participant_pb.js');
 goog.object.extend(proto, participant_pb);
 var reference_pb = require('./reference_pb.js');
 goog.object.extend(proto, reference_pb);
+var sep_pb = require('./sep_pb.js');
+goog.object.extend(proto, sep_pb);
 goog.exportSymbol('proto.bpjs.GetParticipantRequest', null, global);
 goog.exportSymbol('proto.bpjs.GetParticipantResponse', null, global);
 /**

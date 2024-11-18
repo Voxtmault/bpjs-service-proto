@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option go_package = ".";
+
+package bpjs;
+
+message SEPCreateRequest {
+    bytes sepJsonStr = 1;
+}
+
+message SEPCreateResponse {
+    int32 statusCode = 1;
+    string bpjsMessage = 2;
+    string errorMessage = 3;
+    string message = 4;
+    string sep = 5;
+}
+
+message SEPGetRequest {
+    string sepNumber = 1;
+}
+
+message SEPGetResponse {
+    int32 statusCode = 1;
+    string bpjsMessage = 2;
+    string errorMessage =3;
+    string message = 4;
+    bytes sepJsonStr = 5;
+}

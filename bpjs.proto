@@ -6,11 +6,12 @@ package bpjs;
 
 import "participant.proto";
 import "reference.proto";
+import "sep.proto";
 
 // BPJS Will have few services
 // 1. Participant
 // 2. SEP
-// 3. Reference (Rujukan)
+// 3. Reference (Referensi)
 // Others will be added later
 
 service ParticipantService {
@@ -18,6 +19,8 @@ service ParticipantService {
 }
 
 service SEPService {
+    rpc CreateSEP(SEPCreateRequest) returns (SEPCreateResponse);
+    rpc GetSEP(SEPGetRequest) returns (SEPGetResponse);
 }
 
 service ReferenceService {
