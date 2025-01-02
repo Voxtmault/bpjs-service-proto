@@ -522,7 +522,7 @@ proto.bpjs.SEPCreateV2Request.toObject = function(includeInstance, msg) {
     note: jspb.Message.getFieldWithDefault(msg, 5, ""),
     initialdiagnosiscode: jspb.Message.getFieldWithDefault(msg, 6, ""),
     cob: jspb.Message.getFieldWithDefault(msg, 7, ""),
-    catharact: jspb.Message.getFieldWithDefault(msg, 8, ""),
+    cataract: jspb.Message.getFieldWithDefault(msg, 8, ""),
     visitationpurpose: jspb.Message.getFieldWithDefault(msg, 9, ""),
     flagprocedure: jspb.Message.getFieldWithDefault(msg, 10, ""),
     supportcode: jspb.Message.getFieldWithDefault(msg, 11, ""),
@@ -600,7 +600,7 @@ proto.bpjs.SEPCreateV2Request.deserializeBinaryFromReader = function(msg, reader
       break;
     case 8:
       var value = /** @type {string} */ (reader.readString());
-      msg.setCatharact(value);
+      msg.setCataract(value);
       break;
     case 9:
       var value = /** @type {string} */ (reader.readString());
@@ -730,7 +730,7 @@ proto.bpjs.SEPCreateV2Request.serializeBinaryToWriter = function(message, writer
       f
     );
   }
-  f = message.getCatharact();
+  f = message.getCataract();
   if (f.length > 0) {
     writer.writeString(
       8,
@@ -950,10 +950,10 @@ proto.bpjs.SEPCreateV2Request.prototype.setCob = function(value) {
 
 
 /**
- * optional string catharact = 8;
+ * optional string cataract = 8;
  * @return {string}
  */
-proto.bpjs.SEPCreateV2Request.prototype.getCatharact = function() {
+proto.bpjs.SEPCreateV2Request.prototype.getCataract = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
 };
 
@@ -962,7 +962,7 @@ proto.bpjs.SEPCreateV2Request.prototype.getCatharact = function() {
  * @param {string} value
  * @return {!proto.bpjs.SEPCreateV2Request} returns this
  */
-proto.bpjs.SEPCreateV2Request.prototype.setCatharact = function(value) {
+proto.bpjs.SEPCreateV2Request.prototype.setCataract = function(value) {
   return jspb.Message.setProto3StringField(this, 8, value);
 };
 

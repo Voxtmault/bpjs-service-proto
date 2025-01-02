@@ -16,7 +16,7 @@ message SEPCreateV2Request {
     string note = 5;
     string initialDiagnosisCode = 6;
     string cob = 7;
-    string catharact = 8;
+    string cataract = 8;
     string visitationPurpose = 9;
     string flagProcedure = 10;
     string supportCode = 11;
