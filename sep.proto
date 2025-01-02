@@ -8,6 +8,29 @@ message SEPCreateRequest {
     bytes sepJsonStr = 1;
 }
 
+message SEPCreateV2Request {
+    string cardNumber = 1;
+    string serviceDate = 2;
+    string serviceType = 3;
+    string mrNumber = 4;
+    string note = 5;
+    string initialDiagnosisCode = 6;
+    string cob = 7;
+    string catharact = 8;
+    string visitationPurpose = 9;
+    string flagProcedure = 10;
+    string supportCode = 11;
+    string serviceAssessment = 12;
+    string attentingPhysicianCode = 13;
+
+    BPJSTreatmentClass treatmentClass = 14;
+    BPJSReferral referral = 15;
+    BPJSControlLetter controlLetter = 16;
+    BPJSPolyclinic polyclinic = 17;
+    BPJSAccident accident = 18;
+    Accounting accounting = 19;
+}
+
 message SEPCreateResponse {
     int32 statusCode = 1;
     string bpjsMessage = 2;
@@ -26,4 +49,60 @@ message SEPGetResponse {
     string errorMessage =3;
     string message = 4;
     bytes sepJsonStr = 5;
+}
+
+// Helper Models
+
+message Accounting {
+    int64 operatorId = 1;
+    string operatorName = 2;
+    string operatorPhone = 3;
+}
+
+message BPJSTreatmentClass {
+    string treatmentClassCode = 1;
+    string upgradeTreatmentClass = 2;
+    string financing = 3;
+    string pic = 4;
+}
+
+message BPJSReferral {
+    string referralSource = 1;
+    string referralDate = 2;
+    string referralNumber = 3;
+    string referralHealthFacilityCode = 4;
+}
+
+message BPJSControlLetter {
+    string controlLetterNumber = 1;
+    string referredDoctorCode = 2;
+}
+
+message BPJSPolyclinic {
+    string polyclinicCode = 1;
+    string executive = 2;
+}
+
+message BPJSAccident {
+    string accidentType = 1;
+    string registeredAccidentNumber = 2;
+    BPJSAccidentGuarantor guarantor = 3;
+}
+
+message BPJSAccidentGuarantor {
+    string accidentDate = 1;
+    string note = 2;
+    BPJSAccidentSuppletion suppletion = 3;
+}
+
+message BPJSAccidentSuppletion {
+    string suppletion = 1;
+    string suppletionNumber = 2;
+    BPJSAccidentLocation accidentLocation = 3;   
+}
+
+message BPJSAccidentLocation {
+    string provinceCode = 1;
+    string regencyCode = 2;
+    string districtCode = 3;
 }

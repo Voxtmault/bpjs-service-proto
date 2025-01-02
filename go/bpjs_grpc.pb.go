@@ -109,6 +109,7 @@ var ParticipantService_ServiceDesc = grpc.ServiceDesc{
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type SEPServiceClient interface {
 	CreateSEP(ctx context.Context, in *SEPCreateRequest, opts ...grpc.CallOption) (*SEPCreateResponse, error)
+	CreateSEPV2(ctx context.Context, in *SEPCreateV2Request, opts ...grpc.CallOption) (*SEPCreateResponse, error)
 	GetSEP(ctx context.Context, in *SEPGetRequest, opts ...grpc.CallOption) (*SEPGetResponse, error)
 }
 
@@ -129,6 +130,15 @@ func (c *sEPServiceClient) CreateSEP(ctx context.Context, in *SEPCreateRequest, 
 	return out, nil
 }
 
+func (c *sEPServiceClient) CreateSEPV2(ctx context.Context, in *SEPCreateV2Request, opts ...grpc.CallOption) (*SEPCreateResponse, error) {
+	out := new(SEPCreateResponse)
+	err := c.cc.Invoke(ctx, "/bpjs.SEPService/CreateSEPV2", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *sEPServiceClient) GetSEP(ctx context.Context, in *SEPGetRequest, opts ...grpc.CallOption) (*SEPGetResponse, error) {
 	out := new(SEPGetResponse)
 	err := c.cc.Invoke(ctx, "/bpjs.SEPService/GetSEP", in, out, opts...)
@@ -143,6 +153,7 @@ func (c *sEPServiceClient) GetSEP(ctx context.Context, in *SEPGetRequest, opts .
 // for forward compatibility
 type SEPServiceServer interface {
 	CreateSEP(context.Context, *SEPCreateRequest) (*SEPCreateResponse, error)
+	CreateSEPV2(context.Context, *SEPCreateV2Request) (*SEPCreateResponse, error)
 	GetSEP(context.Context, *SEPGetRequest) (*SEPGetResponse, error)
 	mustEmbedUnimplementedSEPServiceServer()
 }
@@ -153,6 +164,9 @@ type UnimplementedSEPServiceServer struct {
 
 func (UnimplementedSEPServiceServer) CreateSEP(context.Context, *SEPCreateRequest) (*SEPCreateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateSEP not implemented")
+}
+func (UnimplementedSEPServiceServer) CreateSEPV2(context.Context, *SEPCreateV2Request) (*SEPCreateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateSEPV2 not implemented")
 }
 func (UnimplementedSEPServiceServer) GetSEP(context.Context, *SEPGetRequest) (*SEPGetResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetSEP not implemented")
@@ -188,6 +202,24 @@ func _SEPService_CreateSEP_Handler(srv interface{}, ctx context.Context, dec fun
 	return interceptor(ctx, in, info, handler)
 }
 
+func _SEPService_CreateSEPV2_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SEPCreateV2Request)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SEPServiceServer).CreateSEPV2(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/bpjs.SEPService/CreateSEPV2",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SEPServiceServer).CreateSEPV2(ctx, req.(*SEPCreateV2Request))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _SEPService_GetSEP_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SEPGetRequest)
 	if err := dec(in); err != nil {
@@ -216,6 +248,10 @@ var SEPService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CreateSEP",
 			Handler:    _SEPService_CreateSEP_Handler,
+		},
+		{
+			MethodName: "CreateSEPV2",
+			Handler:    _SEPService_CreateSEPV2_Handler,
 		},
 		{
 			MethodName: "GetSEP",
