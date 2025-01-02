@@ -257,6 +257,67 @@ proto.bpjs.SEPServicePromiseClient.prototype.createSEP =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
+ *   !proto.bpjs.SEPCreateV2Request,
+ *   !proto.bpjs.SEPCreateResponse>}
+ */
+const methodDescriptor_SEPService_CreateSEPV2 = new grpc.web.MethodDescriptor(
+  '/bpjs.SEPService/CreateSEPV2',
+  grpc.web.MethodType.UNARY,
+  sep_pb.SEPCreateV2Request,
+  sep_pb.SEPCreateResponse,
+  /**
+   * @param {!proto.bpjs.SEPCreateV2Request} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  sep_pb.SEPCreateResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.bpjs.SEPCreateV2Request} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.bpjs.SEPCreateResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.bpjs.SEPCreateResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.bpjs.SEPServiceClient.prototype.createSEPV2 =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/bpjs.SEPService/CreateSEPV2',
+      request,
+      metadata || {},
+      methodDescriptor_SEPService_CreateSEPV2,
+      callback);
+};
+
+
+/**
+ * @param {!proto.bpjs.SEPCreateV2Request} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.bpjs.SEPCreateResponse>}
+ *     Promise that resolves to the response
+ */
+proto.bpjs.SEPServicePromiseClient.prototype.createSEPV2 =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/bpjs.SEPService/CreateSEPV2',
+      request,
+      metadata || {},
+      methodDescriptor_SEPService_CreateSEPV2);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
  *   !proto.bpjs.SEPGetRequest,
  *   !proto.bpjs.SEPGetResponse>}
  */
